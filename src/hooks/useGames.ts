@@ -14,7 +14,7 @@ const useGames = () => {
 
   useEffect ( () => {
     const controller = new AbortController ();
-    apiClient.get<GamesResp>('/games?page_size=4', { signal: controller.signal })
+    apiClient.get<GamesResp>('/games?page_size=6', { signal: controller.signal })
       .then (res => setGames (res.data.results))
       .catch ((err) => {
         if (err instanceof CanceledError) return;
