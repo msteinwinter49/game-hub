@@ -2,7 +2,11 @@ import { Card, CardBody, CardFooter, CardHeader, HStack, Image, Text  } from '@c
 import { Game } from '../services/game-service'
 import PlatformIconList from './PlatformIconList'
 
-const GameCard = (game: Game) => {
+interface Props {
+  game: Game
+}
+
+const GameCard = ({ game} : Props) => {
   return (
     <>
     <Card margin={'5px'}>
@@ -12,9 +16,6 @@ const GameCard = (game: Game) => {
       <CardBody>
         <HStack justifyContent='space-between'>
           <PlatformIconList platforms={game.parent_platforms} />
-          {/* <div>{game.parent_platforms.map (platform => <Text>{platform.platform.slug}</Text>)}</div> */}
-          {/* <PlatformIconList platforms={game.parent_platforms.map(p => p.platform)} /> */}
-          {/* <PlatformIconList platforms={game.parent_platforms?.map(p => p.platform)} /> */}
           <Text fontSize='lg' color='green' as='b' >{game.metacritic}<br/></Text>
         </HStack>
         <Text fontSize='3xl' as='b'>{game.name}</Text>
