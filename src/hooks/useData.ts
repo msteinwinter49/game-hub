@@ -1,25 +1,24 @@
 import { useEffect, useState } from "react";
 import apiClient from "../services/api-client";
 import { CanceledError } from "axios";
-import { Game } from '../services/game-service';
 
-interface GamesResp {
+interface FetchResponse<T> {
   count: number;
-  results: Game[];
+  results: T[]; 
 }
 
-const useGames = () => {
-  const [games, setGames] = useState<Game[]>([]);
+const useData = <T>(endpoint: string) => {
+  const [data, setData] = useState<T[]>([]);
   const [error, setError] = useState ('');
-  const [isLoading, setIsLoading ] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect ( () => {
     const controller = new AbortController ();
-    setIsLoading (true);
-    apiClient.get<GamesResp>('/games?page_size=6', { signal: controller.signal })
+    setIsLoading(true);
+    apiClient.get<FetchResponse<T>>(endpoint, { signal: controller.signal })
       .then (res => {
         setIsLoading (false);
-        setGames (res.data.results)
+        setData (res.data.results);
       })
       .catch ((err) => {
         setIsLoading (false);
@@ -28,8 +27,7 @@ const useGames = () => {
     return () => controller.abort ();
   }, [])
 
-  return { games, error, isLoading }
-
+  return { data, error, isLoading }
 }
 
-export default useGames;
+export default useData;
