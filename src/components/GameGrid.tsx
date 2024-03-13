@@ -3,13 +3,13 @@ import useGames from '../hooks/useGames';
 import GameCard from './GameCard';
 
 const GameGrid = () => {
-  const {games, error, isLoading} = useGames ();  // --- Fetch all games.
+  const {data, error} = useGames ();  // --- Fetch all games.
 
   return (
     <>
       {error && <Text>{error}</Text>}
       <SimpleGrid columns={{ sm: 1, md: 2, lg: 3, xl: 5}} padding={10} spacing={5}>
-        {games.map (game => <GameCard key={game.id} game={game} />)}
+        {data.map (game => <GameCard key={game.id} game={game} />)}
       </SimpleGrid>
     </>
   )

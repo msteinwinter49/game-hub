@@ -3,7 +3,7 @@ import useGenres from '../hooks/useGenres';
 
 const GenreList = () => {
   const {data, error} = useGenres();
-  { console.log (data);}
+  // { console.log (data);}
   return (
     <>
     {error && <Text>{error}</Text>}
