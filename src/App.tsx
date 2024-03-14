@@ -5,14 +5,13 @@ import GenreList from "./components/GenreList";
 import { useState } from "react";
 import { Genre } from "./services/genre-service";
 
-
 function App() {
-  const [selectedGenre, setSelectedGenre] = useState <Genre | null> (null);
+  const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
 
   const handleSelectedGenre = (genre: Genre) => {
-    console.log ('Selected id: ', genre.id)
-    setSelectedGenre (genre);
-  }
+    console.log("Selected id: ", genre.id);
+    setSelectedGenre(genre);
+  };
 
   return (
     <>
@@ -22,15 +21,20 @@ function App() {
           lg: '"nav nav" "aside main"',
         }}
         templateColumns={{
-          base: '1fr',
-          lg: '200px 1fr'
+          base: "1fr",
+          lg: "200px 1fr",
         }}
       >
         <GridItem area="nav">
           <NavBar />
         </GridItem>
         <Show above="lg">
-          <GridItem area="aside" paddingX={5}>< GenreList onSelectGenre={(genre) => handleSelectedGenre (genre)}/></GridItem>
+          <GridItem area="aside" paddingX={5}>
+            <GenreList
+              onSelectGenre={(genre) => handleSelectedGenre(genre)}
+              selectedGenre={selectedGenre}
+            />
+          </GridItem>
         </Show>
         <GridItem area="main">
           <GameGrid selectedGenre={selectedGenre} />
