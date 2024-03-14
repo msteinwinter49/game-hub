@@ -1,9 +1,15 @@
 import { SimpleGrid, Spinner, Text } from '@chakra-ui/react';
 import useGames from '../hooks/useGames';
 import GameCard from './GameCard';
+import { Genre } from '../services/genre-service';
 
-const GameGrid = () => {
-  const {data, error, isLoading} = useGames ();  // --- Fetch all games.
+interface Props {
+  selectedGenre: Genre | null;
+}
+
+const GameGrid = ({ selectedGenre }: Props) => {
+  // console.log ('GameGrid > ', selectedGenre)
+  const {data, error, isLoading} = useGames (selectedGenre);  // --- Fetch all games.
   if (error) return <Text>{error}</Text>
   if (isLoading) return <Spinner />
 
