@@ -1,9 +1,8 @@
-export interface Platform {
-  platform: {
-  id: number;
-  name: string;
-  slug: string;
-}}
+import { ParentPlatform } from "./parentPlatform-service";
+
+interface GameParentPlatform {
+  platform: ParentPlatform[];
+}
 
 export interface Game {
   id: number;
@@ -12,5 +11,5 @@ export interface Game {
   background_image: string;
   added: number;
   metacritic: number;
-  parent_platforms: Platform[];
+  parent_platforms: GameParentPlatform[];
 }
