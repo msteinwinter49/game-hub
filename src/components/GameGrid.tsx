@@ -3,15 +3,15 @@ import useGames from '../hooks/useGames';
 import GameCard from './GameCard';
 import { Genre } from '../services/genre-service';
 import { ParentPlatform } from '../services/parentPlatform-service'
+import { GameQuery } from '../App';
 
 interface Props {
-  selectedGenre: Genre | null;
-  selectedPlatform: ParentPlatform | null;
+  gameQuery: GameQuery;
 }
 
-const GameGrid = ({ selectedGenre, selectedPlatform }: Props) => {
-  console.log ('GameGrid > ', selectedPlatform)
-  const {data, error, isLoading} = useGames (selectedGenre, selectedPlatform);  // --- Fetch all games.
+const GameGrid = ({ gameQuery }: Props) => {
+  console.log ('GameGrid > gameQuery: ', gameQuery)
+  const {data, error, isLoading} = useGames (gameQuery);  // --- Fetch all games.
   if (error) return <Text>{error}</Text>
   if (isLoading) return <Spinner />
 
