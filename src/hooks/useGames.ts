@@ -13,7 +13,14 @@ const useGames = (gameQuery: GameQuery) => {
   console.log("useGames gameQuery > ", gameQuery);
   return useData<Game>(
     "/games",
-    { params: { page_size: '6', genres: gameQuery.genre?.id, parent_platforms: gameQuery.platform?.id } },
+    {
+      params: {
+        page_size: "6",
+        genres: gameQuery.genre?.id,
+        parent_platforms: gameQuery.platform?.id,
+        ordering: gameQuery.sortOrder,
+      },
+    },
     [gameQuery]
   );
 };
