@@ -10,9 +10,7 @@ const GameCard = ({ game} : Props) => {
   return (
     <>
     <Card margin={'5px'}>
-      <CardHeader>
-        <Image src={game.background_image} borderTopRadius='10' />
-      </CardHeader>
+      <Image src={game.background_image} borderTopRadius='10' />
       <CardBody>
         <HStack justifyContent='space-between'>
           <PlatformIconList platforms={game.parent_platforms} />
