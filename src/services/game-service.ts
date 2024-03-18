@@ -12,4 +12,5 @@ export interface Game {
   added: number;
   metacritic: number;
   parent_platforms: GameParentPlatform[];
+  rating_top: number;
 }

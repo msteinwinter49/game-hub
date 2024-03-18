@@ -1,6 +1,7 @@
 import { Card, CardBody, CardFooter, CardHeader, HStack, Image, Text  } from '@chakra-ui/react'
 import { Game } from '../services/game-service'
 import PlatformIconList from './PlatformIconList'
+import Emoji from './Emoji'
 
 interface Props {
   game: Game
@@ -16,9 +17,9 @@ const GameCard = ({ game} : Props) => {
           <PlatformIconList platforms={game.parent_platforms} />
           <Text fontSize='lg' color='green' as='b' >{game.metacritic}<br/></Text>
         </HStack>
-        <Text fontSize='3xl' as='b'>{game.name}</Text>
+        <Text fontSize='3xl' as='b'>{game.name}<Emoji rating={game.rating_top} /></Text>
       </CardBody>
-      <CardFooter>Rating: {game.rating} + {game.added} Id: {game.id}</CardFooter>
+      {/* <CardFooter>Rating: {game.rating} + {game.added} Id: {game.id}</CardFooter> */}
     </Card>
     </>
   )
