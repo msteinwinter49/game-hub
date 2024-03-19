@@ -1,7 +1,7 @@
 import { ParentPlatform } from "./parentPlatform-service";
 
-interface GameParentPlatform {
-  platform: ParentPlatform[];
+export interface GameParentPlatform {
+  platform: ParentPlatform;
 }
 
 export interface Game {
